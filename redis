@@ -1,0 +1,2 @@
+
+docker run -it --name redis -v /home/redis/conf:/usr/local/etc/redis -v /home/redis/data:/data -p 6379:6379 -d redis:latest redis-server /usr/local/etc/redis/redis.conf
