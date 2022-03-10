@@ -75,7 +75,7 @@ http.cors.allow-origin: "*"
 #运行节点配置与分布式节点发现host配置
 node.name: "node-1"
 discovery.seed_hosts: ["106.55.178.129"]
-cluster:initial_master_nodes: ["node-1"]
+cluster.initial_master_nodes: ["node-1"]
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #
