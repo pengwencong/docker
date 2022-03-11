@@ -111,3 +111,10 @@ path.repo: ["/usr/share/elasticsearch/backups"]
 
 #存储类型fs、simplefs、niofs、mmapfs、hybridfs
 index.store.type: hybridfs
+
+
+#索引预加载：可提高搜索速度但会影响索引文件打开速度，而对于大于内存的索引则会起反效果
+#index.store.preload: ["nvd"，"dvd","tim","doc","dim"]
+
+#合并段线程数：实际会以此配置+2进行磁盘操作,默认：Math.max(1, Math.min(4, <<node.processors, node.processors>> / 2))
+#index.merge.scheduler.max_thread_count: 3
