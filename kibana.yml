@@ -1,0 +1,12 @@
+
+server.host: "0.0.0.0"
+server.port: 5601
+#
+server.shutdownTimeout: "5s"
+elasticsearch.hosts: [ "http://106.55.178.129:9200" ]
+i18n.locale: "Zh-CN"
+#ui界面
+monitoring.ui.container.elasticsearch.enabled: true
+#elastic 账号密码
+elasticsearch.username: "elastic"
+elasticsearch.password: "pes%wen&conf"
