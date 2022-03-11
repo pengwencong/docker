@@ -101,22 +101,11 @@ xpack.security.enabled: true
 xpack.license.self_generated.type: basic
 xpack.security.transport.ssl.enabled: true
 #索引设置内存限制
-indices.fielddata.cache.size:  20%
+indices.fielddata.cache.size:  60%
 indices.breaker.total.use_real_memory: false
-indices.breaker.fielddata.limit: 60%
-indices.breaker.request.limit: 40%
-indices.breaker.total.limit: 70%
+indices.breaker.fielddata.limit: 70%
+indices.breaker.request.limit: 45%
+indices.breaker.total.limit: 80%
 #备份路径
 path.repo: ["/usr/share/elasticsearch/backups"]
 
-
-#慢日志配置
-index.search.slowlog.threshold.query.warn: 2s
-index.search.slowlog.threshold.query.info: 1s
-index.search.slowlog.threshold.query.debug: 5s
-index.search.slowlog.threshold.query.trace: 500ms
-
-index.search.slowlog.threshold.fetch.warn: 1s
-index.search.slowlog.threshold.fetch.info: 800ms
-index.search.slowlog.threshold.fetch.debug: 500ms
-index.search.slowlog.threshold.fetch.trace: 200ms
