@@ -109,3 +109,5 @@ indices.breaker.total.limit: 80%
 #备份路径
 path.repo: ["/usr/share/elasticsearch/backups"]
 
+#存储类型fs、simplefs、niofs、mmapfs、hybridfs
+index.store.type: hybridfs
