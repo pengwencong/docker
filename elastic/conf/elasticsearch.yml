@@ -1,0 +1,121 @@
+# ======================== Elasticsearch Configuration =========================
+#
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+#       Before you set out to tweak and tune the configuration, make sure you
+#       understand what are you trying to accomplish and the consequences.
+#
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please consult the documentation for further information on configuration options:
+# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+#
+#cluster.name: my-application
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#
+#node.name: node-1
+#
+# Add custom attributes to the node:
+#
+#node.attr.rack: r1
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+#path.data: /path/to/data
+#
+# Path to log files:
+#
+#path.logs: /path/to/logs
+#
+
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+bootstrap.memory_lock: false
+#
+# Make sure that the heap size is set to about half the memory available
+# on the system and that the owner of the process is allowed to use this
+# limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+#
+network.host: 0.0.0.0
+cluster.name: "docker-cluster"
+#跨域是否开启与跨域运行域名
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+#
+# Set a custom port for HTTP:
+#
+#http.port: 9200
+#
+# For more information, consult the network module documentation.
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when this node is started:
+# The default list of hosts is ["127.0.0.1", "[::1]"]
+#
+#当用docker启动出现exited(7)时需要这个配置
+#运行节点配置与分布式节点发现host配置
+node.name: "node-2"
+#discovery.seed_hosts: ["106.55.178.129"]
+discovery.seed_providers: file
+cluster.initial_master_nodes: ["node-1"]
+#
+# Bootstrap the cluster using an initial set of master-eligible nodes:
+#
+#cluster.initial_master_nodes: ["node-1", "node-2"]
+#
+# For more information, consult the discovery and cluster formation module documentation.
+#
+# ---------------------------------- Gateway -----------------------------------
+#
+# Block initial recovery after a full cluster restart until N nodes are started:
+#
+#gateway.recover_after_nodes: 3
+#
+# For more information, consult the gateway module documentation.
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Require explicit names when deleting indices:
+#
+#action.destructive_requires_name: true
+#密码是否开启
+xpack.security.enabled: true
+xpack.license.self_generated.type: basic
+xpack.security.transport.ssl.enabled: true
+#索引设置内存限制
+indices.fielddata.cache.size:  60%
+indices.breaker.total.use_real_memory: false
+indices.breaker.fielddata.limit: 70%
+indices.breaker.request.limit: 45%
+indices.breaker.total.limit: 80%
+#备份路径
+path.repo: ["/usr/share/elasticsearch/backups"]
+
+#存储类型fs、simplefs、niofs、mmapfs、hybridfs
+index.store.type: hybridfs
+
+
+#索引预加载：可提高搜索速度但会影响索引文件打开速度，而对于大于内存的索引则会起反效果
+#index.store.preload: ["nvd"，"dvd","tim","doc","dim"]
+
+#合并段线程数：实际会以此配置+2进行磁盘操作,默认：Math.max(1, Math.min(4, <<node.processors, node.processors>> / 2))
+#index.merge.scheduler.max_thread_count: 3
