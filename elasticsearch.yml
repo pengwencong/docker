@@ -74,7 +74,8 @@ http.cors.allow-origin: "*"
 #当用docker启动出现exited(7)时需要这个配置
 #运行节点配置与分布式节点发现host配置
 node.name: "node-1"
-discovery.seed_hosts: ["106.55.178.129"]
+#discovery.seed_hosts: ["106.55.178.129"]
+discovery.seed_providers: file
 cluster.initial_master_nodes: ["node-1"]
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
