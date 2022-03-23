@@ -9,3 +9,7 @@ docker run -it --name elastic -p 9200:9200 -p 9300:9300 -e ES_JAVA_OPTS="-Xms300
 kibana docker 开启命令：
 //如果容器内有配置elastic_host 开启不需要设置
 docker run -it --name kibana -e ELASTICSEARCH_HOSTS=http://106.55.178.129:9200 -p 5601:5601 -d kibana:7.16.1
+
+filebeat docker 开启命令：
+docker run -itd --name filebeat -v /home/filebeat/config/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml -v /home/filebeat/logs:/usr/share/filebeat/logs -/home/go/runtime/log/gin.log:/usr/share/filebeat/gin.log --user=root elastic/filebeat:7.17.0
+
